@@ -1,7 +1,7 @@
 # 71 Landmark detector 
 
 
-![samples](https://raw.githubusercontent.com/vanquish630/LandmarkDetector/master/samples/banner.png)
+![samples](https://raw.githubusercontent.com/vanquish630/LandmarkDetector71/master/samples/banner.png)
 
 Landmark detector to detect additional landmarks on top of the head. Uses a 2 stack hourglass architecture for the landmark detector. Used the 300WLP dataset to train the first 68 landmarks. 
 Additional landmarks trained on 2000 manually annotated images. This detector was used to train a 3DMM model that accurately models 
@@ -9,7 +9,7 @@ head shape. The 3DMM model was used to detect landmarks on 75,000 images and use
 
 The landmark numbering is as follows:
 
-![key](https://raw.githubusercontent.com/vanquish630/LandmarkDetector/master/samples/lmk71.png)
+![key](https://raw.githubusercontent.com/vanquish630/LandmarkDetector71/master/samples/lmk71.png)
 
 
 ## How to use
