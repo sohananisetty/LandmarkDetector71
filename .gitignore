@@ -1,0 +1,11 @@
+# ignore these folders
+__pycache__
+.idea
+
+
+#ignore these files
+.ipynb_checkpoints
+*/.ipynb_checkpoints/* 
+*.ipynb
+71lmk_checkpoint.pth.tar
+79999_iter.pth
