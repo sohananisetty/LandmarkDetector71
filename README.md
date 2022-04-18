@@ -7,11 +7,6 @@ Landmark detector to detect additional landmarks on top of the head. Uses a 2 st
 Additional landmarks trained on 2000 manually annotated images. This detector was used to train a 3DMM model that accurately models 
 head shape. The 3DMM model was used to detect landmarks on 75,000 images and used to train the landmark model further.
 
-The landmark numbering is as follows:
-
-![key](https://raw.githubusercontent.com/vanquish630/LandmarkDetector71/master/samples/lmk71.png)
-
-
 ## How to use
 
 Download the [trained model](https://drive.google.com/file/d/1rZ5zzWbYGbgeSbWQVTN5wGMUD3AmKip0/view?usp=sharing) and place it in the pretrained_models folder. 
@@ -21,5 +16,11 @@ Download the [trained model](https://drive.google.com/file/d/1rZ5zzWbYGbgeSbWQVT
 
     image = Image.open(image_path).convert("RGB")
     lmks71 = landmarkDetector71.detect_landmarks(image)
+
+
+
+The landmark numbering is as follows:
+
+![key](https://raw.githubusercontent.com/vanquish630/LandmarkDetector71/master/samples/lmk71.png)
 
 
