@@ -136,6 +136,7 @@ class Segmenter():
         hairmask[(out == 12)] = 1  # lip up
         hairmask[(out == 13)] = 1  # lip dwn
         hairmask[(out == 17)] = 1  # hair
+        hairmask[(out == 18)] = 1  # apparel
 
         im_th = np.array(hairmask * 255, dtype=np.uint8)
 

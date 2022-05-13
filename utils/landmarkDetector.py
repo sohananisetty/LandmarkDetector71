@@ -148,7 +148,7 @@ class LandmarkDetector71:
 
     def detect_landmarks(self , image):
 
-        cropped_image, bbox_coordinates = self.segmenter.returnfacebbox(np.array(image), msk_type='full', getbbox=True)
+        cropped_image, bbox_coordinates = self.segmenter.returnfacebbox(np.array(image), msk_type='full', getbbox=True , margin = 0.2)
         resized_image = cv2.resize(np.array(cropped_image), (256, 256), interpolation=cv2.INTER_CUBIC)
         landmarks71 = self.get_landmarks_71(resized_image)
         ###resize align
