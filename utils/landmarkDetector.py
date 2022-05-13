@@ -148,27 +148,29 @@ class LandmarkDetector71:
 
     def detect_landmarks(self , image):
 
-        if np.min(np.array(image).shape[:2])/np.max(np.array(image).shape[:2])>0.70:
-            resized_image = cv2.resize(np.array(image), (256, 256), interpolation=cv2.INTER_CUBIC)
-            landmarks71 = self.get_landmarks_71(resized_image)
-            ###resize align
-            landmarks71[:, 0] = landmarks71[:, 0] * np.array(image).shape[1] / resized_image.shape[1]
-            landmarks71[:, 1] = landmarks71[:, 1] * np.array(image).shape[0] / resized_image.shape[0]
+        # if np.min(np.array(image).shape[:2])/np.max(np.array(image).shape[:2])>0.70:
+        #     resized_image = cv2.resize(np.array(image), (256, 256), interpolation=cv2.INTER_CUBIC)
+        #     landmarks71 = self.get_landmarks_71(resized_image)
+        #     ###resize align
+        #     landmarks71[:, 0] = landmarks71[:, 0] * np.array(image).shape[1] / resized_image.shape[1]
+        #     landmarks71[:, 1] = landmarks71[:, 1] * np.array(image).shape[0] / resized_image.shape[0]
+        #
+        #     landmarks71[68:,1] =  landmarks71[68:,1] + 6
 
-            landmarks71[68:,1] =  landmarks71[68:,1] + 6
 
+        # else:
+        cropped_image, bbox_coordinates = self.segmenter.returnfacebbox(np.array(image), msk_type='full', getbbox=True , margin = 0.2)
+        resized_image = cv2.resize(np.array(cropped_image), (256, 256), interpolation=cv2.INTER_CUBIC)
+        landmarks71 = self.get_landmarks_71(resized_image)
+        ###resize align
+        landmarks71[:, 0] = landmarks71[:, 0] * cropped_image.shape[1] / resized_image.shape[1]
+        landmarks71[:, 1] = landmarks71[:, 1] * cropped_image.shape[0] / resized_image.shape[0]
+        landmarks71[68:,1] =  landmarks71[68:,1] + 6
+        if landmarks71[69,0] < landmarks71[68,0]:
+            landmarks71[69, 0] = 2*landmarks71[68,0] - landmarks71[70,0]
 
-        else:
-            cropped_image, bbox_coordinates = self.segmenter.returnfacebbox(np.array(image), msk_type='full', getbbox=True , margin = 0.2)
-            resized_image = cv2.resize(np.array(cropped_image), (256, 256), interpolation=cv2.INTER_CUBIC)
-            landmarks71 = self.get_landmarks_71(resized_image)
-            ###resize align
-            landmarks71[:, 0] = landmarks71[:, 0] * cropped_image.shape[1] / resized_image.shape[1]
-            landmarks71[:, 1] = landmarks71[:, 1] * cropped_image.shape[0] / resized_image.shape[0]
-            landmarks71[68:,1] =  landmarks71[68:,1] + 6
-
-            ###crop align
-            landmarks71[:, 0] = landmarks71[:, 0] + bbox_coordinates[2]
-            landmarks71[:, 1] = landmarks71[:, 1] + bbox_coordinates[0]
+        ###crop align
+        landmarks71[:, 0] = landmarks71[:, 0] + bbox_coordinates[2]
+        landmarks71[:, 1] = landmarks71[:, 1] + bbox_coordinates[0]
 
         return landmarks71
