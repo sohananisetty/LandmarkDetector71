@@ -9,7 +9,7 @@ head shape. The 3DMM model was used to detect landmarks on 75,000 images and use
 
 ## How to use
 
-Download the [trained model](https://drive.google.com/file/d/1rZ5zzWbYGbgeSbWQVTN5wGMUD3AmKip0/view?usp=sharing) and place it in the pretrained_models folder. 
+Download the [trained model](https://drive.google.com/file/d/1UtSW4zx232qtIMwQyli5Uu9jfdsdfJuJ/view?usp=sharing) and place it in the pretrained_models folder. 
 
     from utils.landmarkDetector import LandmarkDetector71
     landmarkDetector71 = LandmarkDetector71()
